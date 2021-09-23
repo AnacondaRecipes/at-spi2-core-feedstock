@@ -21,7 +21,9 @@ build:
     - {{ pin_subpackage('at-spi2-core', max_pin='x.x') }}
   missing_dso_whitelist:   # [linux]
     - '*/libX11.so*'  # [linux]
-
+    - $RPATH/libc.so.6  # [linux]
+  ignore_run_exports:
+    - gettext
 requirements:
   build:
     - meson
@@ -32,9 +34,14 @@ requirements:
     - {{ cdt('libx11-devel') }}  # [linux]
     - {{ cdt('libxi-devel') }}  # [linux]
     - {{ cdt('libxfixes-devel') }}  # [linux]
-    - {{ cdt('libxtst-devel') }}  # [linux]
+    - {{ cdt('libxtst-devel') }}  # [linux and not ppc64le]
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
   host:
+    - dbus
+    - gettext
+    - glib
+    - gobject-introspection
+  run:
     - dbus
     - gettext
     - glib
