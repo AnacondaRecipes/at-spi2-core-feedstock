@@ -4,6 +4,10 @@
 
 set -e
 
+if [[ $target_platform == osx-arm64 ]]; then
+  CC=clang
+fi
+
 meson setup builddir \
     -D enable_docs=false \
     --prefix=$PREFIX \
