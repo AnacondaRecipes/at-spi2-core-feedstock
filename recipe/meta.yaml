@@ -28,6 +28,7 @@ requirements:
   build:
     - meson
     - ninja
+    - cmake  # [osx and arm64]
     - pkg-config
     - pthread-stubs  # [linux]
     - {{ compiler('c') }}
