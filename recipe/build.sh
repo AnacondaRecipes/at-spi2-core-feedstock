@@ -4,8 +4,15 @@
 
 set -e
 
+DX11=""
+# we disable x11 on osx-arm64, as there is right now no support on our builders for it
+if [[ $target_platform == osx-arm64 ]]; then
+  DX11="-Dx11=no"
+fi
+
 meson setup builddir \
     -D enable_docs=false \
+    ${DX11} \
     --prefix=$PREFIX \
     --libdir=$PREFIX/lib  \
     --wrap-mode=nofallback
