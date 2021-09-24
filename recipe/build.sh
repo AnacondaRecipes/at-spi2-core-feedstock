@@ -15,7 +15,7 @@ meson setup builddir \
     ${DX11} \
     --prefix=$PREFIX \
     --libdir=$PREFIX/lib  \
-    --wrap-mode=nofallback || cat ./builddir/meson-logs/meson-log.txt
+    --wrap-mode=nofallback
 ninja -v -C builddir -j ${CPU_COUNT}
 ninja -C builddir install -j ${CPU_COUNT}
 

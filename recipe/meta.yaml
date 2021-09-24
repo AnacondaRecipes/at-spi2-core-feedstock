@@ -37,7 +37,6 @@ requirements:
     - {{ cdt('libxfixes-devel') }}  # [linux]
     - {{ cdt('libxtst-devel') }}  # [linux and not ppc64le]
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
-    - dbus  # [osx and arm64]
   host:
     - dbus
     - gettext
