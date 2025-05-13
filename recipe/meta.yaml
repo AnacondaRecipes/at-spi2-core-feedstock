@@ -36,13 +36,11 @@ requirements:
     # setuptools >= 65.0.0 is lacking the msvccompiler module in distutils.
     # https://github.com/pypa/setuptools/pull/3505
     - setuptools <74
-    - python 3.12
-    - gobject-introspection 1.*  # [not win]
   host:
     - dbus
     - gettext
     - glib
-    - gobject-introspection
+    - gobject-introspection 1.*
     - python
     - xorg-libx11  # [linux]
     - xorg-libxi  # [linux]
