@@ -35,8 +35,8 @@ requirements:
     # gobject-introspection 1.* requires setuptools at runtime, but
     # setuptools >= 65.0.0 is lacking the msvccompiler module in distutils.
     # https://github.com/pypa/setuptools/pull/3505
-    - setuptools <65
-    - python 3.11
+    - setuptools <74
+    - python 3.12
     - gobject-introspection 1.*  # [not win]
   host:
     - dbus
