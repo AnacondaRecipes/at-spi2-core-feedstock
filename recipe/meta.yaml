@@ -1,6 +1,6 @@
 {% set name = "at-spi2-core" %}
 {% set version = "2.36.0" %}
-{% set version_majmin = "'.'.join(version.split('.', 2)[:2])" %}
+{% set version_majmin = '.'.join(version.split('.', 2)[:2]) %}
 {% set sha256 = "88da57de0a7e3c60bc341a974a80fdba091612db3547c410d6deab039ca5c05a" %}
 
 # Prior to conda-forge, Copyright 2014-2018 Peter Williams and collaborators.
@@ -14,7 +14,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 3
+  number: 2
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage('at-spi2-core', max_pin='x.x') }}
@@ -37,11 +37,11 @@ requirements:
     - gettext
     - glib
     - gobject-introspection
-    - xorg-libx11
-    - xorg-libxi
-    - xorg-libxfixes
-    - xorg-libxtst
-    - xorg-xproto
+    - xorg-libx11  # [linux]
+    - xorg-libxi  # [linux]
+    - xorg-libxfixes  # [linux]
+    - xorg-libxtst  # [linux]
+    - xorg-xorgproto  # [linux]
   run:
     - dbus
     - gettext
