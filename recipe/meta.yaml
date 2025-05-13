@@ -37,6 +37,7 @@ requirements:
     # https://github.com/pypa/setuptools/pull/3505
     - setuptools <74
     - gobject-introspection
+    - python 3.9
   host:
     - dbus
     - gettext
