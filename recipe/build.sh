@@ -11,7 +11,6 @@ if [[ $target_platform == osx-arm64 ]]; then
 fi
 
 meson setup builddir \
-    -D enable_docs=false \
     ${DX11} \
     --prefix=$PREFIX \
     --libdir=$PREFIX/lib  \
