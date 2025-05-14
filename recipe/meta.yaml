@@ -33,7 +33,7 @@ requirements:
     - pkg-config
     - pthread-stubs  # [linux]
     - {{ compiler('c') }}
-    # object-introspection must be in the build section, not host, otherwise the wrong Python version 
+    # gobject-introspection must be in the build section, not host, otherwise the wrong Python version 
     # will be found by the build system and the build can randomly fail.
     - gobject-introspection
     # gobject-introspection 1.* requires setuptools at runtime, but
