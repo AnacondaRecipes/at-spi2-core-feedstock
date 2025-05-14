@@ -32,13 +32,15 @@ requirements:
     - pkg-config
     - pthread-stubs  # [linux]
     - {{ compiler('c') }}
+    # object-introspection must be in the build section, not host, otherwise the wrong Python version 
+    # will be found by the build system and the build can randomly fail.
+    - gobject-introspection
     # gobject-introspection 1.* requires setuptools at runtime, but
-    # setuptools >= 65.0.0 is lacking the msvccompiler module in distutils.
+    # setuptools >= 74.0.0 is lacking the msvccompiler module in distutils.
     # https://github.com/pypa/setuptools/pull/3505
     - setuptools <74
-    - gobject-introspection
+    # Using fixed version of Python 3.9 to avoid issues with limited Python versions of setuptools <74.0.0 available.
     - python 3.9
-    - gsl
   host:
     - dbus
     - gettext
@@ -53,7 +55,6 @@ requirements:
     - dbus
     - gettext
     - glib
-    - gobject-introspection
 
 test:
   commands:
