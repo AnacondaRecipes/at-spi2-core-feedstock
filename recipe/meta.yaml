@@ -1,10 +1,11 @@
+# Prior to conda-forge, Copyright 2014-2018 Peter Williams and collaborators.
+# This file is licensed under a 3-clause BSD license; see LICENSE.txt.
+
 {% set name = "at-spi2-core" %}
 {% set version = "2.36.0" %}
 {% set version_majmin = '.'.join(version.split('.', 2)[:2]) %}
 {% set sha256 = "88da57de0a7e3c60bc341a974a80fdba091612db3547c410d6deab039ca5c05a" %}
 
-# Prior to conda-forge, Copyright 2014-2018 Peter Williams and collaborators.
-# This file is licensed under a 3-clause BSD license; see LICENSE.txt.
 package:
   name: {{ name|lower }}
   version: {{ version }}
@@ -45,7 +46,6 @@ requirements:
     - dbus
     - gettext
     - glib
-    - python
     - xorg-libx11  # [linux]
     - xorg-libxi  # [linux]
     - xorg-libxfixes  # [linux]
