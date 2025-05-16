@@ -46,10 +46,7 @@ requirements:
     - gettext
     - glib
     - xorg-libx11  # [linux]
-    - xorg-libxi  # [linux]
-    - xorg-libxfixes  # [linux]
     - xorg-libxtst  # [linux]
-    - xorg-xorgproto  # [linux]
   run:
     - dbus
     - gettext
