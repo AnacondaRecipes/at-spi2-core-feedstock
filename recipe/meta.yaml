@@ -34,6 +34,10 @@ requirements:
     - pkg-config
     - pthread-stubs  # [linux]
     - gettext
+    # File "$PREFIX/lib/gobject-introspection/giscanner/utils.py", line 385, in <module>
+    # import distutils.cygwinccompiler
+    # ModuleNotFoundError: No module named 'distutils'
+    - setuptools <74
   host:
     - dbus {{ dbus }}
     - gettext {{ gettext}}
