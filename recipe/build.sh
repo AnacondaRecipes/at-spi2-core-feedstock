@@ -5,9 +5,11 @@
 set -e
 
 DX11=""
-# we disable x11 on osx-arm64, as there is right now no support on our builders for it
+# disable the Linux-only X11 accessibility backend on macOS —
+# upstream doesn't support/need it here; forcing it on causes header
+# mismatches like the GenericEvent error.
 if [[ $target_platform == osx-arm64 ]]; then
-  DX11="-Dx11=no"
+  DX11="-Dx11=disabled"
 fi
 
 meson setup builddir \
@@ -15,7 +17,9 @@ meson setup builddir \
     --prefix=$PREFIX \
     --libdir=$PREFIX/lib  \
     --wrap-mode=nofallback
+
 ninja -v -C builddir -j ${CPU_COUNT}
+
 ninja -C builddir install -j ${CPU_COUNT}
 
 cd $PREFIX
