@@ -42,17 +42,17 @@ requirements:
     - dbus {{ dbus }}
     - gettext {{ gettext}}
     - glib {{ glib }}
-    - xorg-libx11 {{ xorg_libx11 }}  # [linux]
-    - xorg-libxi {{ xorg_libxi }}  # [linux]
-    - xorg-libxtst {{ xorg_libxtst}}  # [linux]
+    - xorg-libx11 {{ xorg_libx11 }}
+    - xorg-libxi {{ xorg_libxi }}
+    - xorg-libxtst {{ xorg_libxtst}}
     - gobject-introspection ==1.86.0
   run:
     - dbus
     - gettext
     - glib
-    - xorg-libx11  # [linux]
-    - xorg-libxi  # [linux]
-    - xorg-libxtst  # [linux]
+    - xorg-libx11
+    - xorg-libxi
+    - xorg-libxtst
 
 test:
   commands:
