@@ -2,19 +2,19 @@
 # This file is licensed under a 3-clause BSD license; see LICENSE.txt.
 
 {% set name = "at-spi2-core" %}
-{% set version = "2.36.0" %}
+{% set version = "2.61.0" %}
 {% set version_majmin = '.'.join(version.split('.', 2)[:2]) %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://download.gnome.org/sources/{{ name }}/{{ version_majmin }}/{{ name }}-{{ version }}.tar.xz
-  sha256: 88da57de0a7e3c60bc341a974a80fdba091612db3547c410d6deab039ca5c05a
+  sha256: 1d813ddbb891cb6a0480bf3ee997444165db31ce8691f33e00b96c0b8b2c10ce
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage('at-spi2-core', max_pin='x.x') }}
@@ -27,10 +27,11 @@ build:
 requirements:
   build:
     - meson
-    - ninja
+    - ninja-base
     - cmake  # [osx and arm64]
     - pkg-config
     - pthread-stubs  # [linux]
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     # gobject-introspection must be in the build section, not host, otherwise the wrong Python version 
     # will be found by the build system and the build can randomly fail.
