@@ -4,15 +4,16 @@
 
 set -e
 
-if [ $target_platform == osx-64 ]; then
-    # Force conda's X11 headers first; XQuartz on macOS runners can leak in otherwise
-    export CPATH="$PREFIX/include${CPATH:+:$CPATH}"
+DX11=""
+# disable the Linux-only X11 accessibility backend on macOS —
+# upstream doesn't support/need it here; forcing it on causes header
+# mismatches like the GenericEvent error.
+if [[ $target_platform == osx-arm64 ]]; then
+  DX11="-Dx11=disabled"
 fi
 
-export CFLAGS="$CFLAGS -I$PREFIX/include"
-export LDFLAGS="$LDFLAGS -L$PREFIX/lib"
-
 meson setup builddir \
+    ${DX11} \
     --prefix=$PREFIX \
     --libdir=$PREFIX/lib  \
     --wrap-mode=nofallback
