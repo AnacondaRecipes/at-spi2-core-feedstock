@@ -4,11 +4,21 @@
 
 set -e
 
+if [ $target_platform == osx-64 ]; then
+    # Force conda's X11 headers first; XQuartz on macOS runners can leak in otherwise
+    export CPATH="$PREFIX/include${CPATH:+:$CPATH}"
+fi
+
+export CFLAGS="$CFLAGS -I$PREFIX/include"
+export LDFLAGS="$LDFLAGS -L$PREFIX/lib"
+
 meson setup builddir \
     --prefix=$PREFIX \
     --libdir=$PREFIX/lib  \
     --wrap-mode=nofallback
+
 ninja -v -C builddir -j ${CPU_COUNT}
+
 ninja -C builddir install -j ${CPU_COUNT}
 
 cd $PREFIX
